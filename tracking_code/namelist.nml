@@ -1,0 +1,20 @@
+&Paths
+MeshPath     = "/albedo/work/projects/oce_rio/cwekerle/mesh/Arc08_sub/"
+ResultPath   = "/albedo/work/projects/oce_rio/cwekerle/result/Arc40/from_1988_erai/"
+InputPath    = "/albedo/work/user/quraus001/FESOM_particles/input/"
+OutputPath   = "/albedo/work/user/quraus001/FESOM_particles/result/"
+BafuFile     = "/albedo/work/user/quraus001/FESOM_particles/preparation/bafux_bafuy_2d.nc"
+outfile      = "drifter_output_2006-274_lat-76_particles-123_tracking-730d_2026-06-03.nc"
+infile       = "drifter_input_2006-274_lat-76_particles-123.dat"
+runid        = "Arc40"
+/
+&Parameters
+syear         = 2006
+num_days      = 730
+steps_per_day = 240
+n_out         = 20
+twoD_tracking = .false.
+backwards     = .false.
+put_back      = .false.
+save_column   = .true.
+/

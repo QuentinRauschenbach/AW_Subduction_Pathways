@@ -1,0 +1,7 @@
+.DS_Store
+*.o
+*.mod
+*.x
+mesh/
+tracking_code/elem_neighbours_rotated.out
+tracking_code/preparation/bafux_bafuy_2d.nc

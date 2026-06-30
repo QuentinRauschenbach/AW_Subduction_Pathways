@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --account=po_physoze.oce_rio
+#SBATCH --job-name=traj_2006_274
+#SBATCH --partition=smp
+#SBATCH --time=12:00:00
+#SBATCH --qos=12h
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=32000
+#SBATCH -o %x_%j.out
+#SBATCH -e error_%x_%j.out
+#SBATCH --hint=nomultithread
+ 
+export OMP_NUM_THREADS=1
+ulimit -s unlimited
+ 
+module load netcdf-fortran/4.5.4-intel-oneapi-mpi2021.6.0-intel2021.6.0
+module load intel-oneapi-compilers/2022.1.0
+ 
+JOBID=`echo $SLURM_JOB_ID | cut -d"." -f1`
+srun /albedo/work/user/quraus001/FESOM_particles/code/trajectories_fesom.x
