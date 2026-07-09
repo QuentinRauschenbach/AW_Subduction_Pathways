@@ -1,0 +1,36 @@
+from dataclasses import dataclass, field
+
+@dataclass
+class GateResults:
+    name: str                    # Experiment name e.g. "Control Run"
+    desc: str = ""               # Description
+    
+    # Raw gate crossings
+    s1: set = field(default_factory=set)
+    s2: set = field(default_factory=set)
+    s3: set = field(default_factory=set)
+    s4: set = field(default_factory=set)
+    s5: set = field(default_factory=set)
+    
+    # Derived categories
+    north:    set = field(default_factory=set)
+    south:    set = field(default_factory=set)
+    yermak:   set = field(default_factory=set)
+    arctic:   set = field(default_factory=set)
+    svalbard: set = field(default_factory=set)
+    
+    # Summary
+    all_crossers: set = field(default_factory=set)
+    beached:      set = field(default_factory=set)
+    active:       set = field(default_factory=set)
+
+    def summary(self):
+        print(f"\n=== {self.name} ===")
+        print(f"  {'North:':{20}} {len(self.north):3d}")
+        print(f"  {'South:':{20}} {len(self.south):3d}")
+        print(f"  {'Yermak:':{20}} {len(self.yermak):3d}")
+        print(f"  {'Arctic:':{20}} {len(self.arctic):3d}")
+        print(f"  {'Svalbard:':{20}} {len(self.svalbard):3d}")
+        print(f"  {'All crossers:':{20}} {len(self.all_crossers):3d}")
+        print(f"  {'Beached:':{20}} {len(self.beached):3d}")
+        print(f"  {'Active:':{20}} {len(self.active):3d}")
