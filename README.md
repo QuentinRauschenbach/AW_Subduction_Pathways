@@ -41,7 +41,8 @@ These pre-steps will be described in the following. The description is mostly ta
     1. **Plot FESOM data** (TS-diagramm and sections) using `plot_FESOM_79_tansect_TS.ipynb` to make sure the water mass definitions in `ocean_helper.py` make sense
     2. **Adjust water mass definitions** (/thresholds) as necessary in `ocean_helper.py` 
     At this point it is only important that the ones for Atlantic Water are correct because they are the only ones that are used before tracking
-3. **Write Input file**
+3. Write the element neighbours file using `compute_neighbours-elements.f90`. This will allow the tracking code to not do a global node search everytime but check the neighbours first.
+4. **Write Input file**
 Use `Create_particle_starts.ipynb` to generate the input files for the particle tracking.
 Here you can set the starting position for each of your drifters as well as the starting times.
 The starting time has to be the same for all drifters in an input file in the current version of the tracking code. 
@@ -49,7 +50,7 @@ The starting time has to be the same for all drifters in an input file in the cu
     - Per default input files are names after the following naming convention:
     `drifter_input_*releaseyear*_*releaseday*_lat_*releaselatitude*_particles_*particle count of the unfiltered grid*.dat`
         - We use the particle count of the unfiltered grid instead of the actual count in the file so that it is possible to relate files from different release days. Because since we filter to have only AW particles starting, the actual count will vary from day to day.
-4. **Compiling**
+5. **Compiling**
     1. As usual for fortran, we have to compile the code for running. Make sure you are in the right folder, 
     2. `module load intel-oneapi-compilers/2022.1.0`  did run once 
     3. and compile using the `Makefile` , by entering first `make clean`  to get rid of any old stuff and then `make` in your terminal.
